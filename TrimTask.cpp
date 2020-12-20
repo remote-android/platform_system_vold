@@ -68,6 +68,7 @@ void TrimTask::addFromFstab() {
     std::unique_ptr<fstab, decltype(&fs_mgr_free_fstab)> fstab(fs_mgr_read_fstab_default(),
                                                                fs_mgr_free_fstab);
     struct fstab_rec *prev_rec = NULL;
+    if (!fstab) return; // HACKED
 
     for (int i = 0; i < fstab->num_entries; i++) {
         /* Skip raw partitions */
