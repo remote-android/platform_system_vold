@@ -62,7 +62,7 @@ static bool prepare_dir(struct selabel_handle* sehandle, mode_t mode, uid_t uid,
     if (sehandle && selabel_lookup(sehandle, &tmp_secontext, path.c_str(), S_IFDIR) == 0) {
         secontext.reset(tmp_secontext);
     }
-    LOG(DEBUG) << "Setting up mode " << std::oct << mode << std::dec << " uid " << uid << " gid "
+    if (secontext) LOG(DEBUG) << "Setting up mode " << std::oct << mode << std::dec << " uid " << uid << " gid "
                << gid << " context " << secontext.get() << " on path: " << path;
     if (secontext) {
         if (setfscreatecon(secontext.get()) != 0) {

@@ -86,7 +86,7 @@ status_t EmulatedVolume::doMount() {
                 "-m",
                 "-w",
                 "-G",
-                "-i",
+                //"-i", // HACKED
                 mRawPath.c_str(),
                 label.c_str(),
                 NULL)) {
