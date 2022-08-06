@@ -243,7 +243,7 @@ int SetQuotaProjectId(const std::string& path, long projectId) {
     ret = ioctl(fd, FS_IOC_FSSETXATTR, &fsx);
     if (ret == -1) {
         PLOG(ERROR) << "Failed to set project id on " << path;
-        return ret;
+        //return ret; // HACKED ignore project quota error
     }
     return 0;
 }
