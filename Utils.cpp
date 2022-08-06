@@ -240,7 +240,7 @@ int SetQuotaProjectId(const std::string& path, long projectId) {
     }
 
     fsx.fsx_projid = projectId;
-    return ioctl(fd, FS_IOC_FSSETXATTR, &fsx);
+    return (ioctl(fd, FS_IOC_FSSETXATTR, &fsx), 0);
 }
 
 int PrepareDirWithProjectId(const std::string& path, mode_t mode, uid_t uid, gid_t gid,
